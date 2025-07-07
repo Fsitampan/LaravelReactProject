@@ -27,6 +27,7 @@ export default function Rooms() {
                         <th className="p-4 border">Pratinjau</th> 
                         <th className="p-4 border">Nama Ruangan</th> 
                         <th className="p-4 border">Lokasi</th>
+                        <th className="p-4 border">deskripsi</th>
                         <th className='p-4 border'>Status</th> 
                         <th className="p-4 border">Aksi</th> 
                     </thead>
@@ -37,6 +38,7 @@ export default function Rooms() {
                         <td className="px-4 py-2 text-center border">Mainland</td>
                         <td className="px-4 py-2 text-center border"></td> 
                         <td className="px-4 py-2 text-center border"></td>
+                         <td className="px-4 py-2 text-center border"></td>
                     </tbody>                  
                 </table>
                 </CardContent>

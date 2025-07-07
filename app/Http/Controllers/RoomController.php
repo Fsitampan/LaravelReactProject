@@ -18,5 +18,8 @@ class RoomController extends Controller
     {
         return inertia::render('Rooms/create');
     }
+    public function list(Request $request){
+        dd($request->all());
+    }
     
 }

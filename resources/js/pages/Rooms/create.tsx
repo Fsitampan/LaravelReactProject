@@ -25,11 +25,15 @@ export default function Rooms() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         location: '',
+        description:'',
         featured_image: null as File | null
+
     });
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        post(route('Rooms.list'), { onSuccess: () => console.log('formsubmitted'), })
         console.log('data', data);
     }
     
@@ -53,6 +57,10 @@ export default function Rooms() {
                 <div className='gap-1.5'>
                 <Label htmlFor="Lokasi Ruangan">Lokasi</Label>
                 <Input id='Lokasi_Ruangan' name='Lokasi_Ruangan' type='text' placeholder="Lokasi Ruangan" autoFocus tabIndex={2} value={data.location}  onChange={(e) => setData('location', e.target.value)}/>
+                </div>
+                <div className='gap-1.5'>
+                <Label htmlFor="descrption">deskripsi</Label>
+                <Textarea id='description' name='description' placeholder="deskripsi ruangan" autoFocus tabIndex={3} value={data.description}  onChange={(e) => setData('description', e.target.value)}/>
                 </div>
                 <div className='gap-1.5'>
                     <Label htmlFor="Image_path">Gambar</Label>

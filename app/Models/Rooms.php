@@ -12,8 +12,8 @@ class Rooms extends Model
         'name',
         'location',
         'description',
+        'featured_image',
         'featured_image_original_name',
-        'status',
     ];
 
     public function bookings()

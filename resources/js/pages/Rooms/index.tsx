@@ -2,7 +2,7 @@ import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
-import { Eye, List, Pencil, Trash2 } from 'lucide-react';  
+import { Eye, List, Pencil, Plus, Trash2 } from 'lucide-react';  
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { error } from 'console';
@@ -52,7 +52,7 @@ export default function index({...props}: { Rooms: Rooms [] }) {
                     </Alert>
                 )}
 
-                <Link href={route('Rooms.create')}><Button className=''> + TAMBAH RUANGAN</Button></Link>
+                <Button className='cursor-pointer w-fit bg-blue-500'><Plus /><Link href={route('Rooms.create')}>  TAMBAH RUANGAN</Link></Button>
                 <Card className='w-full h-auto'>
                 <CardContent className='space-y-4'>
                 <table className='w-full table-auto'>
@@ -83,15 +83,15 @@ export default function index({...props}: { Rooms: Rooms [] }) {
                         <td className="border px-4 py-2 text-center "></td>
                          <td className="border px-4 py-2 text-center ">
                             <Link as='button' className='bg-sky-600 text-white p-1 rounded-lg cursor-pointer hover:opacity-90' href={route('Rooms.show', Rooms.id)}>
-                            <Eye size={20} />{'  '}
+                            <Eye size={18} />{'  '}{'  '}
                             </Link>
 
                             <Link as='button' className='bg-green-600 text-white p-1 rounded-lg cursor-pointer hover:opacity-90' href={route('Rooms.show', Rooms.id)}>
-                            <Pencil size={20} />{'  '}
+                            <Pencil size={18} />{'  '}{'  '}
                             </Link>
 
                             <Link as='button' className='bg-red-600 text-white p-1 rounded-lg cursor-pointer hover:opacity-90' href={route('Rooms.show', Rooms.id)}>
-                            <Trash2 size={20} />{'  '}
+                            <Trash2 size={18} />
                             </Link>
                          </td>
                          </tr>

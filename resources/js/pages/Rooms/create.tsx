@@ -17,11 +17,11 @@ export function TextareaDisabled() {
 const breadcrumbs: BreadcrumbItem[] = [
         {
         title: 'Tambahkan Ruangan',
-        href: '/Rooms/create',
+        href: 'Rooms/create',
     },
 ];
 
-export default function Rooms() {
+export default function Create() {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
@@ -51,7 +51,7 @@ export default function Rooms() {
             <Card className='w-full max-w-lg h-auto'>
                 <CardHeader>
                      <CardTitle>Tambahkan Ruangan</CardTitle> 
-                     <Link className='text-sm text-blue-500 hover:underline' href={route('Rooms')}>Kembali</Link>
+                     <Link className='text-sm text-blue-500 hover:underline' href={route('Rooms.index')}>Kembali</Link>
                      <hr className='border-t-2 border-gray-200'/>   
                   </CardHeader>  
             <CardContent className='space-y-4'>                

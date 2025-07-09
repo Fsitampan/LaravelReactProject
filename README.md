@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 # LARAVEL X REACT 🚀
 =======
-# LaravelReactProject
-# Nama-Proyek-Anda: Aplikasi Full-Stack Laravel & React
+LaravelReactProject
 
 Repositori ini menyajikan contoh aplikasi web full-stack yang mengintegrasikan **Laravel** sebagai pondasi backend dan **React.js** untuk membangun antarmuka pengguna yang interaktif. Dengan memanfaatkan **Inertia.js**, kita dapat menikmati kemudahan pengembangan monolitik sembari mendapatkan performa aplikasi satu halaman (SPA).
 

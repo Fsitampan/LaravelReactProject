@@ -19,11 +19,16 @@ const mainNavItems: NavItem[] = [
         icon: List,
     },
     {
-        title: 'Riwayat Peminjaman',
+        title: 'Pengajuan Peminjaman',
+        href: '/Bookings',
+        icon: Bookmark,
+    },
+    {
+         title: 'Riwayat Peminjaman',
         href: '/Historys',
         icon: History,
     },
-    {
+        {
         title: 'Anggota',
         href: '/Members',
         icon: User,

@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('name')->nullable();
         $table->string('location')->nullable();
         $table->string('description')->nullable();       
-        $table->string('featured_image')->nullable();
+        $table->string('featured_image')->default('');
         $table->enum('status', ['tersedia', 'tidak tersedia'])->default('tersedia');
         $table->timestamps();
     });

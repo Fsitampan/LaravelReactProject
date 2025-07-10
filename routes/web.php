@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\MembersController;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
     Route::get('/Rooms', [RoomController::class, 'index'])->name('Rooms.index');
-    Route::get('Rooms/create', [RoomController::class, 'Create'])->name('Rooms.create');
-    Route::post('/Rooms', [RoomController::class, 'List'])->name('Rooms.List');
     Route::resource('Rooms', RoomController::class);
+    Route::get('Rooms/create', [RoomController::class, 'create'])->name('Rooms.create');
+    Route::get('Rooms/show', [RoomController::class, 'show'])->name('Rooms.show');
     Route::get('/Historys', [HistoryController::class, 'Historys'])->name('Historys');
-    Route::get('/Members', [MembersController::class, 'Members'])->name('Members');
+    Route::get('/Members', [MembersController::class, 'Members'])->name('Members.index');
+    Route::get('/Bookings',[BookingController::class, 'Bookings'])->name('Bookings.index');
 });
 
 require __DIR__.'/settings.php';

@@ -6,10 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LoaderCircle } from 'lucide-react';
+import { ArrowLeft, LoaderCircle } from 'lucide-react';
 import InputError from '@/components/input-error';
 
-export function TextareaDisabled() {
+export function create() {
   return <Textarea placeholder="Type your message here." disabled />
 }
 
@@ -17,24 +17,33 @@ export function TextareaDisabled() {
 const breadcrumbs: BreadcrumbItem[] = [
         {
         title: 'Tambahkan Ruangan',
-        href: 'Rooms/create',
+        href: 'Rooms/Create',
     },
 ];
 
-export default function Create() {
+    interface RoomData {
+    name: string;
+    location: string;
+    description: string;
+    status: 'tersedia' | 'tidak tersedia';
+    }
 
-    const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        location: '',
-        description:'',
-        featured_image: null as File | null
 
+export default function Create({ Rooms }: { Rooms: RoomData }) {
+
+    const { data, setData, post, processing, errors, reset, put } = useForm({
+    name: Rooms?.name || '',
+    location: Rooms?.location || '',
+    description: Rooms?.description || '',
+    featured_image: null as File | null,
+    status: Rooms?.status || 'tersedia',
     });
+
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post(route('Rooms.List'), { onSuccess: () => console.log('formsubmitted'), onError: () => console.log(errors), forceFormData: true })
+        post(route('Rooms.store'), { onSuccess: () => console.log('formsubmitted'), onError: () => console.log(errors), forceFormData: true })
         console.log('data', data);
     };
 
@@ -72,6 +81,21 @@ export default function Create() {
                 <Textarea id='description' name='description' placeholder="deskripsi ruangan" autoFocus tabIndex={3} value={data.description}  onChange={(e) => setData('description', e.target.value)}/>
                 <InputError message={errors.description} />
                 </div>
+                <div className='gap-1.5'>
+                <Label htmlFor="status">Status</Label>
+                <select
+                    id="status"
+                    name="status"
+                    value={data.status}
+                    onChange={(e) => setData('status', e.target.value as 'tersedia' | 'tidak tersedia')}
+                    className="w-full border rounded p-2"
+                >
+                    <option value="tersedia">Tersedia</option>
+                    <option value="tidak tersedia">Tidak Tersedia</option>
+                </select>
+                <InputError message={errors.status} />
+                </div>
+
                 <div className='gap-1.5'>
                     <Label htmlFor="featured_image">Gambar</Label>
                     <Input onChange={handleFileUpload} className='cursor-pointer' id='featured_image' name='featured_image' type='file' autoFocus tabIndex={4}/>

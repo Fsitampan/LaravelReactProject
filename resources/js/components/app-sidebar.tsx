@@ -33,6 +33,11 @@ const mainNavItems: NavItem[] = [
         href: '/Members',
         icon: User,
     },
+     {
+        title: 'products',
+        href: '/products',
+        icon: BookOpen,
+    },
 ];
 
 const footerNavItems: NavItem[] = [

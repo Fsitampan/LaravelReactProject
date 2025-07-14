@@ -12,6 +12,7 @@ class Rooms extends Model
         'name',
         'location',
         'description',
+        'status',
         'featured_image',
         'featured_image_original_name',
     ];

@@ -17,26 +17,27 @@ class RoomController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Rooms::query();
+        $Roomsquery = Rooms::query();
 
         // Total sebelum filter
-        $totalCount = $query->count();
+        $totalCount = $Roomsquery->count();
 
         // Filter pencarian
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(fn($q) =>
-                $q->where('name', 'like', "%{$search}%")
+
+            $Roomsquery->where(fn($query) =>
+                $query->where('name', 'like', "%{$search}%")
                     ->orWhere('location', 'like', "%{$search}%")
                     ->orWhere('description', 'like', "%{$search}%")
             );
         }
 
-        $filteredCount = $query->count();
+        $filteredCount = $Roomsquery->count();
         $perPage = (int) ($request->perPage ?? 10);
 
         if ($perPage === -1) {
-            $allRooms = $query->latest()->get()->map(fn($Rooms) => [
+            $allRooms = $Roomsquery->latest()->get()->map(fn($Rooms) => [
                 'id'                           => $Rooms->id,
                 'name'                         => $Rooms->name,
                 'location'                     => $Rooms->location,
@@ -54,7 +55,7 @@ class RoomController extends Controller
                 'links'    => [],
             ];
         } else {
-            $Rooms = $query->latest()->paginate($perPage)->withQueryString();
+            $Rooms = $Roomsquery->latest()->paginate($perPage)->withQueryString();
             $Rooms->getCollection()->transform(fn($Rooms) => [
                 'id'                           => $Rooms->id,
                 'name'                         => $Rooms->name,
@@ -115,8 +116,7 @@ class RoomController extends Controller
                 'featured_image_original_name' => $featuredImageOriginalName,
             ]);
 
-
-            return redirect()->route('Rooms.index')->with('success', 'Data Ruangan berhasil ditambahkan.');
+            return Inertia::location(route('Rooms.index'));
         } catch (Exception $e) {
             Log::error('Gagal menyimpan ruangan: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data ruangan.');

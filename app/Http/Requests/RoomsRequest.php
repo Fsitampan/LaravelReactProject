@@ -25,6 +25,7 @@ class RoomsRequest extends FormRequest
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:225',
             'description' => 'required|string|max:1000',
+             'status' => 'required|in:tersedia,tidak tersedia',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -48,6 +49,9 @@ class RoomsRequest extends FormRequest
             'featured_image.image' => 'file harus berupa gambar',
             'featured_image.mimes' => 'file harus berformat jpeg,png,jpg,gif,svg',
             'featured_image.max' => 'file gambar tidak boleh lebih dari 2MB',
+            'status.required' => 'status ruangan wajib diisi',
+            'status.in' => 'status harus bernilai tersedia atau tidak tersedia',
+
         ];
     } 
 }

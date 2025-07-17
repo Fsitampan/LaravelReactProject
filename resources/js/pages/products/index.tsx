@@ -3,7 +3,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Pagination } from '@/components/ui/pagination';
-import  ProductTableConfig  from '@/config/tables/product-tables';
+import  { ProductTableConfig }  from '@/config/tables/product-tables';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link, router, useForm, usePage } from '@inertiajs/react';
@@ -116,7 +116,7 @@ export default function Index({ products, filters, totalCount, filteredCount }: 
     };
 
     // Handle Delete
-    const handleDelete = (id: number, route: string) => {
+    const handleDelete = (route: string) => {
         if (confirm('Are you sure, you want to delete?')) {
             router.delete(route, {
                 preserveScroll: true,
@@ -174,17 +174,13 @@ export default function Index({ products, filters, totalCount, filteredCount }: 
                     data={products.data}
                     from={products.from}
                     onDelete={handleDelete}
+                    onView={() => { /* TODO: implement view handler */ }}
+                    onEdit={() => { /* TODO: implement edit handler */ }}
                 />
 
                 {/* Pagination */}
-                <Pagination
-                    products={products}
-                    perPage={data.perPage}
-                    onPerPageChange={handlePerPageChange}
-                    totalCount={totalCount}
-                    filteredCount={filteredCount}
-                    search={data.search}
-                />
+                {/* TODO: Replace with custom Pagination component if needed */}
+                <Pagination />
             </div>
         </AppLayout>
     );

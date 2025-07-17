@@ -27,13 +27,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/Rooms', RoomController::class);
 
     // Rute untuk menampilkan daftar riwayat (histories)
-    Route::get('/histories', [HistoryController::class, 'Historys'])->name('history.index');
+    Route::get('/Historys', [HistoryController::class, 'Historys'])->name('historys.index');
 
     // Rute untuk menampilkan daftar anggota (members)
-    Route::get('/members', [MembersController::class, 'Members'])->name('members.index');
+    Route::get('/Members', [MembersController::class, 'Members'])->name('members.index');
 
     // Rute untuk menampilkan daftar pemesanan (bookings)
-    Route::get('/bookings', [BookingController::class, 'Bookings'])->name('bookings.index');
+    Route::get('/Bookings', [BookingController::class, 'Bookings'])->name('bookings.index');
 });
 
 // Memasukkan file rute eksternal

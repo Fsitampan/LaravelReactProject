@@ -27,7 +27,7 @@ export default function create() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    post(route('rooms.store'));
+    post(route('Rooms.store'));
   };
 
   return (

@@ -1,4 +1,16 @@
-export const ProductTableConfig = {
+import * as LucidIcons from 'lucide-react';
+
+interface ActionConfig {
+    label: string;
+    icon: keyof typeof LucidIcons;
+    route: string;
+    className: string;
+}
+
+export const ProductTableConfig: {
+    columns: { label: string; key: string; isImage?: boolean; isAction?: boolean; className?: string }[];
+    actions: ActionConfig[];
+} = {
     columns: [
         { label: 'Product Name', key: 'name', className: 'border p-4' },
         { label: 'Description', key: 'description', className: 'w-90 border p-4' },

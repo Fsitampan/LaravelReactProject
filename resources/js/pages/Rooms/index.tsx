@@ -74,7 +74,7 @@ export default function index({ Rooms, filters, totalCount, filteredCount }: Ind
     const value = e.target.value;
     setData('search', value);
 
-    router.get(route('rooms.index'), {
+    router.get(route('Rooms.index'), {
       search: value,
       perPage: data.perPage,
     }, {
@@ -87,7 +87,7 @@ export default function index({ Rooms, filters, totalCount, filteredCount }: Ind
     setData('search', '');
     setData('perPage', '10');
 
-    router.get(route('rooms.index'), {}, {
+    router.get(route('Rooms.index'), {}, {
       preserveState: true,
       preserveScroll: true,
     });
@@ -95,7 +95,7 @@ export default function index({ Rooms, filters, totalCount, filteredCount }: Ind
 
   const handlePerPageChange = (value: string) => {
     setData('perPage', value);
-    router.get(route('rooms.index'), {
+    router.get(route('Rooms.index'), {
       search: data.search,
       perPage: value,
     }, {
@@ -139,7 +139,7 @@ export default function index({ Rooms, filters, totalCount, filteredCount }: Ind
             <Link
               className="flex cursor-pointer items-center rounded-lg bg-indigo-800 px-4 py-2 text-white hover:opacity-90"
               as="button"
-              href={route('rooms.create')}
+              href={route('Rooms.create')}
             >
               <CirclePlusIcon className="me-2" /> Tambah Ruangan
             </Link>
